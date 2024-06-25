@@ -18,7 +18,7 @@ This is a simple Vue.js application for generating QR codes with customizable op
   - Logo overlay with customizable size ratio
 - Preview of the QR code generated based on user inputs.
 
-## 💿 Install
+## 💿 Install from repo
 
 1. Clone the repository:
 ```sh
@@ -44,6 +44,20 @@ npm run preview
 ```
 
 The app will be served at localhost:3000 by default.
+
+## 📦 Install from Docker
+
+### Build Docker Image
+
+```bash
+docker build -t qr-code-generator-frontend .
+```
+
+### Run Docker Container
+
+```bash
+docker run -p 3000:3000 qr-code-generator-frontend
+```
 
 ## 💡 Usage
 

@@ -22,7 +22,7 @@ This is a simple Vue.js application for generating QR codes with customizable op
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/your-username/qr-code-generator-frontend.git
+git clone https://github.com/AugustoLL/qr-code-generator-frontend.git
 cd qr-code-generator-frontend
 ```
 
@@ -46,6 +46,12 @@ npm run preview
 The app will be served at localhost:3000 by default.
 
 ## 📦 Install from Docker
+
+### Clone the repository:
+```sh
+git clone https://github.com/AugustoLL/qr-code-generator-frontend.git
+cd qr-code-generator-frontend
+```
 
 ### Build Docker Image
 

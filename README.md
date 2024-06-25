@@ -15,7 +15,7 @@ This is a simple Vue.js application for generating QR codes with customizable op
 - - Size
 - - Error correction level
 - - Dark and light colors
-  - Logo overlay with customizable size ratio
+- - Logo overlay with customizable size ratio
 - Preview of the QR code generated based on user inputs.
 
 ## 💿 Install from repo
@@ -70,11 +70,11 @@ docker run -p 3000:3000 qr-code-generator-frontend
 1. Open your browser and navigate to the application URL.
 2. Enter the URL you want to encode.
 3. Customize the QR code appearance:
-  - Select image format (PNG, JPEG, WebP).
-  - Choose the size of the QR code.
-  - Pick colors for the pattern and background.
-  - Optionally, provide a logo URL and adjust the size ratio.
-  - The preview will update dynamically based on your selections.
+- - Select image format (PNG, JPEG, WebP).
+- - Choose the size of the QR code.
+- - Pick colors for the pattern and background.
+- - Optionally, provide a logo URL and adjust the size ratio.
+- - The preview will update dynamically based on your selections.
 4. Click "Generate" to see the final QR code image.
 
 ## 🖼️ Examples

@@ -63,7 +63,7 @@ The app will be served at localhost:3000 by default.
 <img src="examples/example2.png" />
 
 
-Technologies Used
+## ⚒️ Technologies Used
 
 - Vue.js
 - Vite

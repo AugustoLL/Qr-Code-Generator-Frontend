@@ -259,6 +259,7 @@
       params.append('logoSizeRatio', logoSize.value.toString());
     }
     try {
+      // const response = await axios.get(`http://qr-code-generator-backend:8080/api/generate?${params}`, { responseType: 'arraybuffer' });
       const response = await axios.get(`http://localhost:8080/api/generate?${params}`, { responseType: 'arraybuffer' });
 
       const base64String = btoa(

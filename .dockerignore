@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# Logs
+dist/
+
+# Git files
+.git/
+.gitignore
+
+# Local environment variables
+.env.example
+.env.local
+.env.development.local
+.env.production.local
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*~
+
+# Windows metadata
+Thumbs.db
+
+# Ignore build files
+build
+coverage
+public

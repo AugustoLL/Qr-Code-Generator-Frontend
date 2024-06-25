@@ -18,6 +18,24 @@ This is a simple Vue.js application for generating QR codes with customizable op
 - - Logo overlay with customizable size ratio
 - Preview of the QR code generated based on user inputs.
 
+## ❕ Yet to implement
+- Change the style of the shapes of the QR Code
+- Allow QR Codes for 
+- - contact: 
+- - - name: name, last name
+- - - contact: mobile number, phone number, fax, email
+- - - company: company, job
+- - - street
+- - - city: name, zip
+- - - state
+- - - country
+- - - website
+- - wifi: network name, password, encryption (none, wpa/wpa2, wep)
+- - emails: address, subject, message
+- - sms: number, message
+- Allow for gradients when setting the colors
+- Add Dynamic QR Codes (codes that can be updated without changing the printed code)
+
 ## 💿 Install from repo
 
 1. Clone the repository:

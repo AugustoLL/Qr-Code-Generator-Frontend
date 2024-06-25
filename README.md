@@ -1,4 +1,5 @@
 # QR Code Generator Frontend
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://opensource.org/licenses/MIT)
 ![Vue.js Version](https://img.shields.io/badge/vue-v20.11.0-green?style=for-the-badge&logo=vue.js&labelColor=%232b2b2d)
 ![Vuetify Version](https://img.shields.io/badge/v3.5.8-js?style=for-the-badge&logo=vuetify&label=vuetify&color=%231867c0)
 [![axios Version](https://img.shields.io/badge/axios-v1.7.2-blue?style=for-the-badge&logo=axios)](https://www.npmjs.com/package/axios/v/1.7.2)

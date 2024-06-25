@@ -6,7 +6,7 @@
     >
 
       <div class="text-center">
-        <h1 class="text-h2 font-weight-bold">QR Code Generator</h1>
+        <h1 class="text-h2 font-weight-bold text-primary">QR Code Generator</h1>
       </div>
 
       <div class="py-4"></div>
@@ -35,11 +35,11 @@
                     type="url"
                   ></v-text-field>
                 </v-row>
-                <v-row>
+                <v-row align="center" class="pl-4">
                   <v-icon icon="mdi-image-multiple"></v-icon>
-                  <v-card-title>Format</v-card-title>
+                  <v-card-title>Format:</v-card-title>
                   <v-chip-group
-                    class="mb-2 mx-4"
+                    class="mb-2"
                     label="Format"
                     v-model="format.value.value"
                     :rules="format.rules"
@@ -51,7 +51,8 @@
                     :key="format"
                     :text="format"
                     :value="format"
-                    variant="outlined" 
+                    variant="outlined"
+                    class="mx-2"
                     filter
                   ></v-chip>
                 </v-chip-group>
@@ -67,9 +68,9 @@
                     type="number"
                   ></v-text-field>
                 </v-row>
-                <v-row>
+                <v-row class="pl-1 my-6" justify="center">
                   <v-color-picker 
-                  class="mb-2 mx-4"
+                  class="mx-4"
                     v-model="patternColor.value.value" 
                     mode="hex" 
                     :modes="['hex']"
@@ -77,7 +78,7 @@
                     :width="mobile ? '100%' : '40%'"
                   ></v-color-picker>
                   <v-color-picker 
-                    class="mb-2 mx-4"
+                    class="mx-4"
                     v-model="backgroundColor.value.value" 
                     mode="hex" 
                     :modes="['hex']"
@@ -96,7 +97,28 @@
                     type="url"
                   ></v-text-field>
                 </v-row>
-                <v-row>
+                <v-row align="center" class="pl-4">
+                  <v-icon icon="mdi-format-size"></v-icon>
+                  <v-card-title>Logo Size:</v-card-title>
+                  <v-chip-group
+                    class="mb-2"
+                    label="Logo Size"
+                    v-model="logoSize"
+                    hide-details="auto"
+                    mandatory
+                  >
+                    <v-chip 
+                      v-for="size in validLogoSizes"
+                      :key="size.text"
+                      :text="size.text"
+                      :value="size.value"
+                      variant="outlined"
+                      class="mx-2"
+                      filter
+                    ></v-chip>
+                  </v-chip-group>
+                </v-row>
+                <v-row class="pl-4" align="center" justify="center">
                   <v-btn type="submit" :disabled="!isFormValid" variant="outlined" color="primary" class="mt-4">
                     Generate
                   </v-btn>
@@ -113,6 +135,15 @@
             rounded="lg"
             variant="outlined"
           >
+            <template #title>
+              <h2 class="text-h5 font-weight-bold">Preview</h2>
+            </template>
+
+            <template #subtitle>
+              <div class="text-subtitle-1">
+                {{ error }}
+              </div>
+            </template>
             <v-img
             v-if="qrCodeImage"
             :src="qrCodeImage"
@@ -129,17 +160,9 @@
                 </div>
               </template>
             </v-img>
-
-            <h2>{{ error }}</h2>
-
-            <template #title>
-              <h2 class="text-h5 font-weight-bold">Preview</h2>
-            </template>
-
-            <template #subtitle>
-              <div class="text-subtitle-1">
-              </div>
-            </template>
+            <v-row v-if="qrCodeImage">
+              <v-btn block class="my-4" :href="qrCodeImage" target="_blank" icon="mdi-download"></v-btn>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
@@ -207,14 +230,22 @@
   const logoUrl = {
     value: ref(''),
     rules: [
-      (value: string) => value.startsWith('http://') || value.startsWith('https://') || 'Invalid URL.',
-      (value: string) => value.length <= 2000 || 'Max 2000 characters',
+      (value: string) => !value || value.startsWith('http://') || value.startsWith('https://') || 'Invalid URL.',
+      (value: string) => !value || value.length <= 2000 || 'Max 2000 characters',
       (value: string) => {
+        if (!value) return true;
         const pattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
         return pattern.test(value) || 'Invalid URL. Example: https://example.com'
       },
     ],
   };
+
+  const logoSize = ref(0.2);
+  const validLogoSizes = [
+    { text: "small", value: 0.1 }, { text: "medium", value: 0.2 }, { text: "large", value: 0.3 }
+  ]
+
+
   const generateQRCode = async () => {
     const params = new URLSearchParams({
       url: url.formatted.value,
@@ -222,9 +253,11 @@
       size: size.value.value.toString(),
       darkColor: patternColor.value.value,
       lightColor: backgroundColor.value.value,
-      logoUrl: logoUrl.value.value,
     });
-
+    if (logoUrl.value.value !== '') {
+      params.append('logoUrl', logoUrl.value.value);
+      params.append('logoSizeRatio', logoSize.value.toString());
+    }
     try {
       const response = await axios.get(`http://localhost:8080/api/generate?${params}`, { responseType: 'arraybuffer' });
 
@@ -243,7 +276,7 @@
     }
   };
 
-  watch([url.value, format.value, size.value, qrCodeImage.value], () => { 
+  watch([url.value, format.value, size.value, qrCodeImage.value, logoUrl.value, logoSize, patternColor.value, backgroundColor.value], () => { 
     if (isFormValid.value) generateQRCode();
   });
 </script>

@@ -59,8 +59,8 @@ The app will be served at localhost:3000 by default.
 
 ## 🖼️ Examples
 
-<img src="examples/example1.png" width="300" />
-<img src="examples/example2.png" width="300" />
+<img src="examples/example1.png" />
+<img src="examples/example2.png" />
 
 
 Technologies Used

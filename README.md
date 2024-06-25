@@ -1,4 +1,8 @@
-# Vuetify (Default)
+# QR Code Generator Frontend
+![Vue.js Version](https://img.shields.io/badge/vue-v20.11.0-green?style=for-the-badge&logo=vue.js&labelColor=%232b2b2d)
+
+
+
 
 This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
 

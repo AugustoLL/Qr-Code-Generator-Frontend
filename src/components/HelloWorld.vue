@@ -264,6 +264,8 @@
       // const response = await axios.get(`http://localhost:8080/api/generate?${params}`, { responseType: 'arraybuffer' });
       const response = await axios.get(`${import.meta.env.VITE_API_URL}${params}`, { responseType: 'arraybuffer' });
       console.log(`SERVER URL: ${test}`);
+      console.log(`SERVER URL: ${import.meta.env.VITE_API_URL}`);
+      console.log(`PORT: ${import.meta.env.VITE_APP_PORT}`);
 
 
       const base64String = btoa(

@@ -42,9 +42,9 @@ export default defineConfig({
     ],
   },
   server: {
-    port: 3000,
+    port: parseInt(process.env.VITE_APP_PORT),
   },
   preview: {
-    port: 3000,
+    port: parseInt(process.env.VITE_APP_PORT),
   },
 })

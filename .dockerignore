@@ -12,6 +12,7 @@ dist/
 .gitignore
 
 # Local environment variables
+.env
 .env.example
 .env.local
 .env.development.local
